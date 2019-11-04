@@ -6,8 +6,8 @@ import Modal from './Modal'
 import api from './config'
 
 async function getNews(callback, query = 'technology') {
-    const response = await api.get('everything', {
-        params: { q: query, apiKey: 'cad91b838deb423e88eb24107cb27bef' }
+    const response = await api.get('top-headlines', {
+        params: { q: query, country: 'br', apiKey: 'cad91b838deb423e88eb24107cb27bef' }
     })
 
     setTimeout(() => callback(response.data.articles), 500)
