@@ -17,7 +17,7 @@
     border-radius: 2px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    padding: 1rem 2rem;
+    padding: .5rem 2rem;
     cursor: pointer;
     transition: all .7s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
@@ -27,7 +27,7 @@
 }
 
 .search__button svg {
-    width: 2rem;
+    width: 4rem;
     display: inline-block;
     position: relative;
 }

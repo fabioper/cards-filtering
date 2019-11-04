@@ -27,6 +27,7 @@
     background: #fff;
     padding: 3rem;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.082);
+    border-radius: 3px;
 }
 
 #modal-root > div p {

@@ -44,7 +44,9 @@ function Card({ title, description, date, url, openModal }) {
                         </div>
 
                         <footer className="card__footer">
-                            <small className="card__date">{date}</small>
+                            <small className="card__date">
+                                Publicado em: <time pubdate>{date}</time>
+                            </small>
                             <a href={url} className="card__source" title="Link da matéria">
                                 <LinkIcon/>
                             </a>
