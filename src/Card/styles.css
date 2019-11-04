@@ -45,6 +45,7 @@
 
 .card__body {
     font-family: 'Playfair Display', serif;
+    line-height: 1.7;
 }
 
 .card__footer {
