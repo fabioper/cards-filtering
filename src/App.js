@@ -25,13 +25,13 @@ function App() {
     const [modalSelected, switchModal] = useState(false)
 
     const onQueryChange = value => setQuery(value)
-
-    useEffect(() => { getNews(updateNews) }, [])
-
     const handleSearch = event => {
         event.preventDefault()
         getNews(updateNews, query)
     }
+    const handleModalClick = () => switchModal(false)
+
+    useEffect(() => { getNews(updateNews) }, [])
 
     return (
         <>
@@ -47,25 +47,21 @@ function App() {
                 />
             </div>
 
-            {
-                modalSelected && (
-                    <Modal className="modal">
-                        <div className="modal__content">
-                            <p>Tem certeza que deseja ir para a tela?</p>
-                            <div className="modal__options">
-                                <button
-                                    className="modal__button modal__button--secondary"
-                                    onClick={() => switchModal(false)}>
-                                        Não
-                                </button>
-                                <button className="modal__button" onClick={() => switchModal(false)}>
+            { modalSelected && (
+                <Modal className="modal">
+                    <div className="modal__content">
+                        <p>Tem certeza que deseja ir para a tela?</p>
+                        <div className="modal__options">
+                            <button className="modal__button modal__button--secondary" onClick={handleModalClick}>
+                                Não
+                            </button>
+                            <button className="modal__button" onClick={handleModalClick}>
                                     Sim
-                                </button>
-                            </div>
+                            </button>
                         </div>
-                    </Modal>
-                )
-            }
+                    </div>
+                </Modal>
+            ) }
         </>
     )
 }
