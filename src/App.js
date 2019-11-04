@@ -5,12 +5,18 @@ import Modal from './Modal'
 
 import api from './config'
 
-async function getNews(callback, query = 'technology') {
-    const response = await api.get('top-headlines', {
-        params: { q: query, country: 'br', apiKey: 'cad91b838deb423e88eb24107cb27bef' }
-    })
+async function getNews(callback, query) {
+    const params = {
+        country: 'br',
+        apiKey: 'cad91b838deb423e88eb24107cb27bef',
+        sortBy: 'publishedAt',
+        pageSize: 6
+    }
+    if (query) { params.q = query }
 
-    setTimeout(() => callback(response.data.articles), 500)
+    const response = await api.get('top-headlines', { params })
+
+    callback(response.data.articles)
 }
 
 function App() {
@@ -20,11 +26,12 @@ function App() {
 
     const onQueryChange = value => setQuery(value)
 
-    useEffect(() => {
-        query ?
-            getNews(updateNews, query) :
-            getNews(updateNews)
-    }, [query])
+    useEffect(() => { getNews(updateNews) }, [])
+
+    const handleSearch = event => {
+        event.preventDefault()
+        getNews(updateNews, query)
+    }
 
     return (
         <>
@@ -32,6 +39,7 @@ function App() {
                 <SearchBar
                     query={query}
                     onChange={onQueryChange}
+                    onSubmit={handleSearch}
                 />
                 <CardsList
                     cards={news}
@@ -42,13 +50,8 @@ function App() {
             {
                 modalSelected && (
                     <Modal className="modal">
-                        <button
-                            className="modal__close"
-                            onClick={() => switchModal(false)}>
-                                Fechar
-                        </button>
                         <div className="modal__content">
-                            <p>Você confirma?</p>
+                            <p>Tem certeza que deseja ir para a tela?</p>
                             <div className="modal__options">
                                 <button
                                     className="modal__button modal__button--secondary"

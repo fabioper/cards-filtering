@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700&display=swap');
 
 :root {
-    --font-family: 'Poppins', sans-serif;
-    --color-background: #fafafa;
+    --font-family: 'Roboto', sans-serif;
+    --color-background: #FAFAFA;
     --color-foreground: #2f2f2f;
+    --color-accent: #FED468;
+    --color-secondary: #2A65DD;
 }
 
 
@@ -33,15 +34,20 @@ html {
 body {
     font-size: 1.6rem;
     font-family: var(--font-family);
-    background-color: var(--color-background);
     color: var(--color-foreground);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-image: url(./background.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    background-size: cover contain;
+    background-color: var(--color-background);
 }
 /* --------------- /base --------------- */
 
 .container {
-    width: calc(100% - 3rem);
+    width: calc(100vw - 3rem);
     max-width: 960px;
     margin: auto;
 }

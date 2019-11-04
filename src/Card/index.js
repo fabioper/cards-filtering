@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 
 import './styles.css'
 
-function Card({ title, description, date, url, openModal, imageUrl }) {
-    const [isExpanded, expand] = useState(false)
+import { ReactComponent as LinkIcon } from '../link-icon.svg'
+import { ReactComponent as ArrowIcon } from '../arrow_down.svg'
 
-    console.log(openModal)
+function Card({ title, description, date, url, openModal }) {
+    const [isExpanded, expand] = useState(false)
 
     return (
         <article className="card">
@@ -15,7 +16,18 @@ function Card({ title, description, date, url, openModal, imageUrl }) {
                 <button
                     className="card__button card__button--secondary"
                     onClick={() => expand(!isExpanded)}>
-                    { isExpanded ? 'Fechar detalhes' : 'Ver detalhes'}
+                    {/* { isExpanded ?
+                        'Ocultar detalhes da ação' :
+                        'Ver detalhes da ação' } */}
+                    { isExpanded ?
+                        <>
+                            Ocultar detalhes da ação
+                            <ArrowIcon className="opened" />
+                        </> :
+                        <>
+                            Ver detalhes da ação
+                            <ArrowIcon />
+                        </> }
                 </button>
             </header>
 
@@ -23,20 +35,19 @@ function Card({ title, description, date, url, openModal, imageUrl }) {
                 isExpanded && (
                     <div className="card__body">
                         <div className="card__content">
-                            <figure className="card__image-wrapper">
-                                <img src={imageUrl} alt="" className="card__image"/>
-                            </figure>
                             <p className="card__description">{description}</p>
+                            <button
+                                className="card__button card__button--primary"
+                                onClick={() => openModal()}>
+                                Ver mais
+                            </button>
                         </div>
 
                         <footer className="card__footer">
                             <small className="card__date">{date}</small>
-                            <a href={url} className="card__source">Link da notícia</a>
-                            <button
-                                className="card__button"
-                                onClick={() => openModal()}>
-                                Ver mais
-                            </button>
+                            <a href={url} className="card__source" title="Link da matéria">
+                                <LinkIcon/>
+                            </a>
                         </footer>
                     </div>
                 )

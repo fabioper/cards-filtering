@@ -13,10 +13,12 @@ class Modal extends Component {
 
     componentDidMount() {
         modalRoot.appendChild(this.el)
+        modalRoot.style.background = 'rgba(0, 0, 0, 0.3)'
     }
 
     componentWillUnmount() {
         modalRoot.removeChild(this.el)
+        modalRoot.style.background = 'none'
     }
 
     render() {
