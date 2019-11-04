@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
+import './styles.css'
+
 const modalRoot = document.querySelector('#modal-root')
 
 class Modal extends Component {

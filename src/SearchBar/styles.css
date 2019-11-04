@@ -1,0 +1,36 @@
+.search {
+    padding: 3rem 0;
+}
+
+.search__form {
+    width: 100%;
+    max-width: 64rem;
+    margin: auto;
+    position: relative;
+}
+
+.search__form::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: .5rem;
+    width: 2.5rem;
+    height: 100%;
+    background-image: url(../search-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+.search__input {
+    padding: 1rem;
+    border-radius: 2px;
+    border: 1px solid #ececec;
+    outline: none;
+    font-size: 1.8rem;
+    color: #4b4b4b;
+    width: 100%;
+    display: block;
+}

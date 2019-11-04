@@ -41,13 +41,25 @@ function App() {
 
             {
                 modalSelected && (
-                    <Modal>
+                    <Modal className="modal">
                         <button
-                            className="close-modal"
+                            className="modal__close"
                             onClick={() => switchModal(false)}>
-                                Fechar modal
+                                Fechar
                         </button>
-                        <h1>Hello</h1>
+                        <div className="modal__content">
+                            <p>Você confirma?</p>
+                            <div className="modal__options">
+                                <button
+                                    className="modal__button modal__button--secondary"
+                                    onClick={() => switchModal(false)}>
+                                        Não
+                                </button>
+                                <button className="modal__button" onClick={() => switchModal(false)}>
+                                    Sim
+                                </button>
+                            </div>
+                        </div>
                     </Modal>
                 )
             }

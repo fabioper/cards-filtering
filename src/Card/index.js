@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-function Card({ title, description, date, url, openModal }) {
+import './styles.css'
+
+function Card({ title, description, date, url, openModal, imageUrl }) {
     const [isExpanded, expand] = useState(false)
 
     console.log(openModal)
@@ -11,9 +13,9 @@ function Card({ title, description, date, url, openModal }) {
             <header className="card__header">
                 <h3 className="card__title">{title}</h3>
                 <button
-                    className="card__button--secondary"
+                    className="card__button card__button--secondary"
                     onClick={() => expand(!isExpanded)}>
-                    { isExpanded ? 'Fechar' : 'Ver detalhes'}
+                    { isExpanded ? 'Fechar detalhes' : 'Ver detalhes'}
                 </button>
             </header>
 
@@ -21,12 +23,15 @@ function Card({ title, description, date, url, openModal }) {
                 isExpanded && (
                     <div className="card__body">
                         <div className="card__content">
+                            <figure className="card__image-wrapper">
+                                <img src={imageUrl} alt="" className="card__image"/>
+                            </figure>
                             <p className="card__description">{description}</p>
                         </div>
 
-                        <footer className="card__info">
+                        <footer className="card__footer">
                             <small className="card__date">{date}</small>
-                            <a href={url} className="card__wrapper">Source</a>
+                            <a href={url} className="card__source">Link da notícia</a>
                             <button
                                 className="card__button"
                                 onClick={() => openModal()}>
@@ -46,7 +51,8 @@ Card.propTypes = {
     content: PropTypes.string,
     date: PropTypes.string,
     url: PropTypes.string,
-    openModal: PropTypes.func
+    openModal: PropTypes.func,
+    imageUrl: PropTypes.string
 }
 
 export default Card

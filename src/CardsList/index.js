@@ -10,6 +10,7 @@ function CardsList({ cards, openModal }) {
                     key={idx}
                     title={card.title}
                     description={card.description}
+                    imageUrl={card.urlToImage}
                     url={card.url}
                     date={new Date(card.publishedAt).toLocaleDateString()}
                     openModal={openModal}
