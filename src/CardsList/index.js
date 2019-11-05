@@ -21,7 +21,8 @@ function CardsList({ cards, openModal }) {
 }
 
 CardsList.propTypes = {
-    cards: PropTypes.array
+    cards: PropTypes.array,
+    openModal: PropTypes.func
 }
 
 export default CardsList

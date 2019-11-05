@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import './styles.css'
 
 import { ReactComponent as LinkIcon } from '../link-icon.svg'
-import { ReactComponent as ArrowIcon } from '../arrow_down.svg'
+import { ReactComponent as ArrowIcon } from '../arrow.svg'
 
 function Card({ title, description, date, url, openModal }) {
     const [isExpanded, expand] = useState(false)
@@ -16,9 +16,6 @@ function Card({ title, description, date, url, openModal }) {
                 <button
                     className="card__button card__button--secondary"
                     onClick={() => expand(!isExpanded)}>
-                    {/* { isExpanded ?
-                        'Ocultar detalhes da ação' :
-                        'Ver detalhes da ação' } */}
                     { isExpanded ?
                         <>
                             Ocultar detalhes da ação
@@ -47,7 +44,7 @@ function Card({ title, description, date, url, openModal }) {
                             <small className="card__date">
                                 Publicado em: <time pubdate={date}>{date}</time>
                             </small>
-                            <a href={url} className="card__source" title="Link da matéria">
+                            <a href={url} className="card__source" title="Link da matéria" target="_blank">
                                 <LinkIcon/>
                             </a>
                         </footer>
@@ -64,8 +61,7 @@ Card.propTypes = {
     content: PropTypes.string,
     date: PropTypes.string,
     url: PropTypes.string,
-    openModal: PropTypes.func,
-    imageUrl: PropTypes.string
+    openModal: PropTypes.func
 }
 
 export default Card
